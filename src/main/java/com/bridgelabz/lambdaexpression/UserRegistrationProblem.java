@@ -4,15 +4,12 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class UserRegistrationProblem {
-	// Function to validate the userfirstname
     public static boolean isValidUserFirstName(String firstname)
     {
         // Regex to check valid userfirstname.
         String regex = "^[A-Za-z]\\w{3,29}$";
-  
         // Compile the ReGex
         Pattern p = Pattern.compile(regex);
-  
         // If the userfirstname is empty
         // return false
         if (firstname == null) {
@@ -70,7 +67,18 @@ public class UserRegistrationProblem {
             // matched the ReGex
             return m.matches();
         }
-
+        // Function to validate the usermobilenumnber
+        public static boolean isValidMobileNo(String mobileNumber)  
+        {  
+        //(0/91): number starts with (0/91)  
+        //[7-9]: starting of the number may contain a digit between 0 to 9  
+        //[0-9]: then contains digits 0 to 9  
+        Pattern ptrn = Pattern.compile("^((\\+|00)(\\d{1,3})[\\s-]?)?(\\d{10})$");
+        //the matcher() method creates a matcher that will match the given input against this pattern  
+        Matcher match = ptrn.matcher(mobileNumber);  
+        //returns a boolean value  
+        return (match.find() && match.group().equals(mobileNumber));  
+        }  
     // main function
     public static void main(String[] args)
     {
@@ -80,5 +88,7 @@ public class UserRegistrationProblem {
         System.out.println(isValidUserLastName(str2));
         String str3 ="neeta.mourya@bl.co.in"; //email
         System.out.println(isValidUserEmail(str3));  
+        String str4 ="+91-9919819801"; //usermobilenumnber
+        System.out.println(isValidMobileNo(str4));  
     }   
 }
