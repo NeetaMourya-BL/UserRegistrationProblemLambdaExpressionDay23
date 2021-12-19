@@ -1,5 +1,6 @@
 package com.bridgelabz.lambdaexpression;
 
+import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -112,15 +113,50 @@ public class UserRegistrationProblem {
     // main function
     public static void main(String[] args)
     {
-        String str1 = "Neeta"; //firstname
+        String str1 = "Abcd"; //firstname
         System.out.println(isValidUserFirstName(str1));
-        String str2 = "Mourya"; //lastname
+        String str2 = "Wxyz"; //lastname
         System.out.println(isValidUserLastName(str2));
-        String str3 ="neeta.mourya@bl.co.in"; //email
+        String str3 ="abc.xyz@bl.co.in"; //email
         System.out.println(isValidUserEmail(str3));  
         String str4 ="+91-9919819801"; //usermobilenumnber
         System.out.println(isValidMobileNo(str4));  
         String str5 ="BridgeLabz@123"; //userpassword
         System.out.println(isValidPassword(str5)); 
+        
+        ArrayList<String> emails = new ArrayList<String>();  
+        emails.add("abc@yahoo.com");  
+        emails.add("abc-100@yahoo.com"); 
+        emails.add("abc.100@yahoo.com");  
+        emails.add("abc111@abc.com");  
+        emails.add("abc-100@abc.net"); 
+        emails.add("abc.100@abc.com.au");  
+        emails.add("abc@1.com"); 
+        emails.add("abc#@gmail.com.com"); 
+        emails.add("abc+100@gmail.com");  
+        //Add invalid emails in list  
+        emails.add("abc");  
+        emails.add("abc@.com.my");  
+        emails.add("abc123@gmail.a");  
+        emails.add("abc123@.com");  
+        emails.add("abc123@.com.com");  
+        emails.add(".abc@abc.com");  
+        emails.add("abc()*@gmail.com");  
+        emails.add("abc@%*.com");  
+        emails.add("abc..2002@gmail.com");  
+        emails.add("abc.@gmail.com");  
+        emails.add("abc@abc@gmail.com");  
+        emails.add("abc@gmail.com.1a");  
+        emails.add("abc@gmail.com.aa.au");  
+        //Regular Expression   
+        String regex = "^(.+)@(.+)$";  
+        //Compile regular expression to get the pattern  
+        Pattern pattern = Pattern.compile(regex);  
+        //Iterate emails array list  
+        for(String email : emails){  
+            //Create instance of matcher   
+            Matcher matcher = pattern.matcher(email);  
+            System.out.println(email +" : "+ matcher.matches()+"\n");  
+        }  
     }   
 }
